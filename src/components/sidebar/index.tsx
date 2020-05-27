@@ -8,8 +8,10 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import AddIcon from '@material-ui/icons/Add';
+import TimelineIcon from '@material-ui/icons/Timeline';
+import AddLocationIcon from '@material-ui/icons/AddLocation';
+import InfoIcon from '@material-ui/icons/Info';
 
 interface Props {
     loggedIn: boolean,
@@ -26,15 +28,19 @@ class Sidebar extends React.Component<Props, State> {
     drawerListItems = [
         {
             screen: "Request",
+            icon: <AddIcon />,
         },
         {
             screen: "Status",
+            icon: <TimelineIcon />,
         },
         {
             screen: "Add Location",
+            icon: <AddLocationIcon />,
         },
         {
             screen: "Information",
+            icon: <InfoIcon />,
         },
     ]
     renderDrawerContents = () => {
@@ -44,13 +50,13 @@ class Sidebar extends React.Component<Props, State> {
                     width: 240,
                     backgroundColor: 'primary'
                 }}>
-                    <Typography variant="h4" style={{padding: 16}}>
+                    <Typography variant="h5" style={{padding: 16}}>
                         SF-CADS
                     </Typography>
                 </Box>
                 <Divider />
                 <List>
-                    {this.drawerListItems.map(({ screen }, index) => {
+                    {this.drawerListItems.map(({ screen, icon }, index) => {
                         return React.cloneElement(
                             <ListItem button key={index}
                             onClick={() => {
@@ -58,7 +64,7 @@ class Sidebar extends React.Component<Props, State> {
                                 this.props.toggleDrawer(false);
                             }}>
                                 <ListItemIcon>
-                                    <InboxIcon />
+                                    {icon}
                                 </ListItemIcon>
                                 <ListItemText>
                                     {screen}
@@ -67,11 +73,13 @@ class Sidebar extends React.Component<Props, State> {
                         );
                     })}
                     <Divider />
-                    <ListItem button key="Logout">
-                        <ListItemText>
-                            Logout
-                        </ListItemText>
-                    </ListItem>
+                    {this.props.loggedIn &&
+                        <ListItem divider button key="Logout">
+                            <ListItemText>
+                                Logout
+                            </ListItemText>
+                        </ListItem>
+                    }
                 </List>
             </React.Fragment>
         );

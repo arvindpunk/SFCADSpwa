@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 import ScreenManager from '../screens';
 import Sidebar from '../components/sidebar';
 import Navbar from '../components/navbar';
@@ -34,7 +35,7 @@ class AppContainer extends React.Component<Props, State> {
 
     render() {
         return (
-            <React.Fragment>
+            <Box bgcolor="#dddddd" minHeight="100vh">
                 <Navbar
                     title={this.state.screen}
                     toggleDrawer={this.toggleDrawer} />
@@ -43,8 +44,12 @@ class AppContainer extends React.Component<Props, State> {
                     open={this.state.open}
                     toggleDrawer={this.toggleDrawer}
                     setScreen={this.setScreen} />
-                <ScreenManager screen={this.state.screen} />
-            </React.Fragment>
+                <Container maxWidth='md' style={{ padding: 0}}>
+                    <Box bgcolor="#ffffff" boxShadow={3}>
+                        <ScreenManager screen={this.state.screen} />
+                    </Box>
+                </Container>
+            </Box>
         );
     }
 }
