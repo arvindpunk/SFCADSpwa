@@ -6,7 +6,9 @@ import AddLocationScreen from './addlocation';
 import InformationScreen from './information';
 
 interface Props {
-    screen: string;
+    screen: string,
+    setScreen: Function,
+    setLoggedIn: Function
 }
 
 interface State {
@@ -22,7 +24,7 @@ class ScreenManager extends React.Component<Props, State> {
         this.screenMap.set("Status", <StatusScreen />);
         this.screenMap.set("Add Location", <AddLocationScreen />);
         this.screenMap.set("Information", <InformationScreen />);
-        this.screenMap.set("Login", <LoginScreen />)
+        this.screenMap.set("Login", <LoginScreen setScreen={this.props.setScreen} setLoggedIn={this.props.setLoggedIn} />)
     }
     render() {
         return (

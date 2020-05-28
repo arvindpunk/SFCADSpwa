@@ -18,6 +18,7 @@ interface Props {
     open: boolean,
     toggleDrawer: Function,
     setScreen: Function,
+    setLoggedIn: Function
 }
 
 interface State {
@@ -43,6 +44,13 @@ class Sidebar extends React.Component<Props, State> {
             icon: <InfoIcon />,
         },
     ]
+
+    handleLogout = () => {
+        this.props.setLoggedIn(false);
+        this.props.setScreen("Login");
+        this.props.toggleDrawer(false);
+    }
+
     renderDrawerContents = () => {
         return (
             <React.Fragment>
@@ -74,7 +82,7 @@ class Sidebar extends React.Component<Props, State> {
                     })}
                     <Divider />
                     {this.props.loggedIn &&
-                        <ListItem divider button key="Logout">
+                        <ListItem divider button key="Logout" onClick={() => this.handleLogout()}>
                             <ListItemText>
                                 Logout
                             </ListItemText>

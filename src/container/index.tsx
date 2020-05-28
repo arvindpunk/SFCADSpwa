@@ -21,7 +21,7 @@ class AppContainer extends React.Component<Props, State> {
         this.state = {
             loggedIn: false,
             open: false,
-            screen: 'Request'
+            screen: 'Login'
         }
     }
 
@@ -31,6 +31,10 @@ class AppContainer extends React.Component<Props, State> {
 
     setScreen = (screen: string) => {
         this.setState({screen: screen});
+    }
+
+    setLoggedIn = (loggedIn: boolean) => {
+        this.setState({loggedIn: loggedIn});
     }
 
     render() {
@@ -43,10 +47,15 @@ class AppContainer extends React.Component<Props, State> {
                     loggedIn={this.state.loggedIn}
                     open={this.state.open}
                     toggleDrawer={this.toggleDrawer}
-                    setScreen={this.setScreen} />
+                    setScreen={this.setScreen}
+                    setLoggedIn={this.setLoggedIn} />
                 <Container maxWidth='md' style={{ padding: 0}}>
                     <Box bgcolor="#ffffff" boxShadow={3}>
-                        <ScreenManager screen={this.state.screen} />
+                        <ScreenManager
+                        screen={this.state.screen}
+                        setScreen={this.setScreen}
+                        setLoggedIn={this.setLoggedIn}
+                        />
                     </Box>
                 </Container>
             </Box>

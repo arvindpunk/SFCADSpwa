@@ -11,6 +11,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from '@material-ui/core/Button';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+} from '@material-ui/pickers';
 
 interface Props {
 
@@ -18,13 +23,15 @@ interface Props {
 
 interface State {
     dialogOpen: boolean;
+    date: Date | null;
 }
 
 class RequestScreen extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            dialogOpen: false
+            dialogOpen: false,
+            date: new Date()
         }; 
     }
     
@@ -55,11 +62,23 @@ class RequestScreen extends React.Component<Props, State> {
                     Request bot at?
                 </DialogTitle>
                 <DialogContent>
-                
+                    <KeyboardTimePicker
+                    margin="normal"
+                    id="time-picker"
+                    label="Pick Time"
+                    value={this.state.date}
+                    onChange={(date) => this.setState({date: date})}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change time',
+                    }}
+                    />
                 </DialogContent>
                 <DialogActions>
                 <Button
-                onClick={() => this.setState({dialogOpen: false})}
+                onClick={() => {
+                    this.setState({dialogOpen: false})
+                    this.dummyData.push()
+                }}
                 color="primary" autoFocus>
                     Request
                 </Button>
@@ -70,7 +89,7 @@ class RequestScreen extends React.Component<Props, State> {
 
     render() {
         return (
-            <React.Fragment>
+            <MuiPickersUtilsProvider utils={DateFnsUtils} >
                 <List disablePadding>
                     {this.dummyData.map(({ date, time }, index) => {
                         return React.cloneElement(
@@ -97,7 +116,7 @@ class RequestScreen extends React.Component<Props, State> {
                         <AddIcon />
                     </Fab>
                 </Zoom>
-            </React.Fragment>
+            </MuiPickersUtilsProvider>
         );
     }
 }
