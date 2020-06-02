@@ -12,17 +12,18 @@ import AddIcon from '@material-ui/icons/Add';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
 import InfoIcon from '@material-ui/icons/Info';
+import * as firebase from 'firebase';
+import 'firebase/auth';
 
 interface Props {
-    loggedIn: boolean,
     open: boolean,
+    loggedIn: boolean,
     toggleDrawer: Function,
     setScreen: Function,
-    setLoggedIn: Function
 }
 
 interface State {
-    open: boolean;
+
 }
 
 class Sidebar extends React.Component<Props, State> {
@@ -46,7 +47,10 @@ class Sidebar extends React.Component<Props, State> {
     ]
 
     handleLogout = () => {
-        this.props.setLoggedIn(false);
+        firebase.auth().signOut().catch((error) => {
+            console.log(error.code);
+            console.log(error.message);
+        });
         this.props.setScreen("Login");
         this.props.toggleDrawer(false);
     }

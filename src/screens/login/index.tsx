@@ -5,8 +5,7 @@ import {
 import LoginPanel from '../../components/login';
 
 interface Props {
-    setScreen: Function,
-    setLoggedIn: Function
+    
 }
 
 interface State {
@@ -21,7 +20,7 @@ class LoginScreen extends React.Component<Props, State> {
             <React.Fragment>
                 <Grid container justify="center" alignItems="center">
                     <Grid item xs={12} md={4}>
-                        <LoginPanel setLoggedIn={this.props.setLoggedIn} setScreen={this.props.setScreen}/>
+                        <LoginPanel />
                     </Grid>
                 </Grid>
             </React.Fragment>

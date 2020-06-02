@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import AppContainer from './container';
+import initializeFirebase from './scripts/initializeFirebase';
+import * as firebase from 'firebase';
 
 ReactDOM.render(
   <React.StrictMode>
+    {initializeFirebase()}
     <AppContainer/>
   </React.StrictMode>,
   document.getElementById('root')
