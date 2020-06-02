@@ -24,7 +24,8 @@ interface State {
     open: boolean,
     screen: string,
     type: string,
-    dialogOpen: boolean
+    dialogOpen: boolean,
+    userType: string,
 }
 
 class AppContainer extends React.Component<Props, State> {
@@ -35,7 +36,8 @@ class AppContainer extends React.Component<Props, State> {
             open: false,
             screen: 'Login',
             type: '',
-            dialogOpen: false
+            dialogOpen: false,
+            userType: '',
         }
     }
 
@@ -85,11 +87,13 @@ class AppContainer extends React.Component<Props, State> {
                     if (doc.exists) {
                         if (doc.data()?.type === 'restaurant') {
                             this.setState({
+                                userType: "restaurant",
                                 screen: "Request",
                                 loggedIn: true
                             })
                         } else if (doc.data()?.type === 'ngo') {
                             this.setState({
+                                userType: "ngo",
                                 screen: "Accept",
                                 loggedIn: true
                             })
@@ -130,10 +134,12 @@ class AppContainer extends React.Component<Props, State> {
                     title={this.state.screen}
                     toggleDrawer={this.toggleDrawer} />
                 <Sidebar
+                    screen={this.state.screen}
                     open={this.state.open}
                     toggleDrawer={this.toggleDrawer}
                     setScreen={this.setScreen}
-                    loggedIn={this.state.loggedIn} />
+                    loggedIn={this.state.loggedIn} 
+                    userType={this.state.userType} />
                 <Container maxWidth='md' style={{ padding: 0}}>
                     <Box bgcolor="#ffffff" boxShadow={3}>
                         <ScreenManager
