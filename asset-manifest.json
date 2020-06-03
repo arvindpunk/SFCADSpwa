@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/SFCADSpwa/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/SFCADSpwa/static/js/main.b70c0f7c.chunk.js",
+    "main.js.map": "/SFCADSpwa/static/js/main.b70c0f7c.chunk.js.map",
+    "runtime-main.js": "/SFCADSpwa/static/js/runtime-main.69ccc8c4.js",
+    "runtime-main.js.map": "/SFCADSpwa/static/js/runtime-main.69ccc8c4.js.map",
+    "static/js/2.bc81e1b2.chunk.js": "/SFCADSpwa/static/js/2.bc81e1b2.chunk.js",
+    "static/js/2.bc81e1b2.chunk.js.map": "/SFCADSpwa/static/js/2.bc81e1b2.chunk.js.map",
+    "index.html": "/SFCADSpwa/index.html",
+    "precache-manifest.5c529eb3b1ad27673772a2d4b5a1f5bd.js": "/SFCADSpwa/precache-manifest.5c529eb3b1ad27673772a2d4b5a1f5bd.js",
+    "service-worker.js": "/SFCADSpwa/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/SFCADSpwa/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.bc81e1b2.chunk.js.LICENSE.txt": "/SFCADSpwa/static/js/2.bc81e1b2.chunk.js.LICENSE.txt",
+    "static/media/logo.png": "/SFCADSpwa/static/media/logo.67268839.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.69ccc8c4.js",
+    "static/js/2.bc81e1b2.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.b70c0f7c.chunk.js"
+  ]
+}
